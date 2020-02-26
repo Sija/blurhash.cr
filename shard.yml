@@ -1,0 +1,23 @@
+name: blurhash
+version: 0.1.0
+
+authors:
+  - Sijawusz Pur Rahnama <sija@sija.pl>
+
+dependencies:
+  stumpy_png:
+    github: stumpycr/stumpy_png
+    version: ~> 4.5.2
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
+    version: ~> 0.11.0
+
+targets:
+  blurhash:
+    main: src/cli.cr
+
+crystal: 0.33.0
+
+license: MIT
