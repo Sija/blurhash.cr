@@ -26,6 +26,20 @@ describe Blurhash do
         .should eq("L00000fQfQfQfQfQfQfQfQfQfQfQ")
     end
 
+    it "properly encodes example JPEG images" do
+      Blurhash.encode(4, 3, fixture_path("img", "img1.jpg"))
+        .should eq("LBHV6nWB2zk8lAoJadNHx]kCH?r@")
+
+      Blurhash.encode(4, 3, fixture_path("img", "img2.jpg"))
+        .should eq("LGFFaXYk^6#M#H5c,1Ex+bor[j6o")
+
+      Blurhash.encode(4, 3, fixture_path("img", "img3.jpg"))
+        .should eq("L6Pj0^nh.AyE%gt7t7R*x^o#DgR4")
+
+      Blurhash.encode(4, 3, fixture_path("img", "img4.jpg"))
+        .should eq("LBO2?V=}P.}==YQ]QnM_^fMx%f#P")
+    end
+
     it "raises on unsupported file types" do
       expect_raises(ArgumentError, %(Extension "foo" is not supported)) do
         Blurhash.encode(1, 1, fixture_path("invalid.foo"))

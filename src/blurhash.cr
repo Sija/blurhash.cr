@@ -1,4 +1,5 @@
 require "stumpy_png"
+require "stumpy_jpeg"
 require "./blurhash/*"
 
 module Blurhash
@@ -21,11 +22,13 @@ module Blurhash
     {x_components, y_components}
   end
 
-  # NOTE: At the moment only `png` files are supported.
+  # NOTE: At the moment only `png` and `jpg` file types are supported.
   def encode(x_components : Int, y_components : Int, path : Path) : String
     case ext = path.extension.lstrip('.').downcase
     when "png"
       canvas = StumpyPNG.read(path.to_s)
+    when "jpg", "jpeg"
+      canvas = StumpyJPEG.read(path.to_s)
     else
       raise ArgumentError.new "Extension #{ext.inspect} is not supported"
     end
