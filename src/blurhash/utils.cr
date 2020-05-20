@@ -34,9 +34,9 @@ module Blurhash::Utils
   end
 
   def encode_ac(r : Float, g : Float, b : Float, maximum_value : Float) : Int32
-    quant_r = {0.0, {18.0, (sign_pow(r / maximum_value, 0.5) * 9 + 9.5).floor}.min}.max.to_i
-    quant_g = {0.0, {18.0, (sign_pow(g / maximum_value, 0.5) * 9 + 9.5).floor}.min}.max.to_i
-    quant_b = {0.0, {18.0, (sign_pow(b / maximum_value, 0.5) * 9 + 9.5).floor}.min}.max.to_i
+    quant_r = (sign_pow(r / maximum_value, 0.5) * 9 + 9.5).floor.clamp(0.0, 18.0).to_i
+    quant_g = (sign_pow(g / maximum_value, 0.5) * 9 + 9.5).floor.clamp(0.0, 18.0).to_i
+    quant_b = (sign_pow(b / maximum_value, 0.5) * 9 + 9.5).floor.clamp(0.0, 18.0).to_i
     (quant_r * 19 * 19) + (quant_g * 19) + quant_b
   end
 

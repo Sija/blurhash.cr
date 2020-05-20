@@ -64,7 +64,7 @@ module Blurhash
 
       if ac && !ac.empty?
         actual_maximum_value = ac.map(&.max).max
-        quantised_maximum_value = {0.0, {82.0, (actual_maximum_value * 166 - 0.5).floor}.min}.max.to_i
+        quantised_maximum_value = (actual_maximum_value * 166 - 0.5).floor.clamp(0.0, 82.0).to_i
         maximum_value = (quantised_maximum_value + 1) / 166
         Base83.encode(buffer, quantised_maximum_value, 1)
       else

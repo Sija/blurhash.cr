@@ -11,7 +11,7 @@ module Blurhash::SRGB
   end
 
   def from_linear(value : Float) : Int32
-    v = {0.0, {1.0, value}.min}.max
+    v = value.clamp(0.0, 1.0)
     if v <= 0.0031308
       v = v * 12.92 * 255 + 0.5
     else
