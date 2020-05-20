@@ -41,6 +41,9 @@ describe Blurhash do
     end
 
     it "raises on unsupported file types" do
+      expect_raises(ArgumentError, "Missing file extension") do
+        Blurhash.encode(1, 1, fixture_path("invalid"))
+      end
       expect_raises(ArgumentError, %(Extension "foo" is not supported)) do
         Blurhash.encode(1, 1, fixture_path("invalid.foo"))
       end

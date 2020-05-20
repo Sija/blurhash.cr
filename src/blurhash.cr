@@ -24,11 +24,13 @@ module Blurhash
 
   # NOTE: At the moment only `png` and `jpg` file types are supported.
   def encode(x_components : Int, y_components : Int, path : Path) : String
-    case ext = path.extension.lstrip('.').downcase
+    case ext = path.extension.lstrip('.').downcase.presence
     when "png"
       canvas = StumpyPNG.read(path.to_s)
     when "jpg", "jpeg"
       canvas = StumpyJPEG.read(path.to_s)
+    when nil
+      raise ArgumentError.new "Missing file extension"
     else
       raise ArgumentError.new "Extension #{ext.inspect} is not supported"
     end
