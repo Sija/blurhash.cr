@@ -1,17 +1,31 @@
+require "climate"
 require "./blurhash"
 
+def fail(message : String? = nil)
+  if message = message.presence
+    message = "!Error¡: #{message}"
+  end
+  abort(message.try(&.climatize))
+end
+
+Climate.configure do |settings|
+  settings.use_defaults!
+end
+
+Colorize.on_tty_only!
+
 (ARGV.size == 3) ||
-  abort "Usage: #{PROGRAM_NAME} <x_components> <y_components> <image_path>"
+  abort "Usage: {#{PROGRAM_NAME}} <x_components> <y_components> <image_path>".climatize
 
 x_components, y_components, image_path = ARGV
 
-x_components = x_components.to_i? || abort "<x_components> argument must be a number"
-y_components = y_components.to_i? || abort "<y_components> argument must be a number"
+x_components = x_components.to_i? || fail "<x_components> argument must be a number"
+y_components = y_components.to_i? || fail "<y_components> argument must be a number"
 
 path = Path[image_path].expand(home: true)
 
 File.file?(path) ||
-  abort "<image_path> argument must point to a valid file"
+  fail "<image_path> argument must point to a valid file"
 
 begin
   puts Blurhash.encode(
@@ -19,6 +33,6 @@ begin
     y_components: y_components,
     path: path
   )
-rescue e : Exception
-  abort e.message
+rescue ex : Exception
+  fail(ex.message)
 end
