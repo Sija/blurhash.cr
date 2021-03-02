@@ -8,10 +8,7 @@ def fail(message : String? = nil)
   abort(message.try(&.climatize))
 end
 
-Climate.configure do |settings|
-  settings.use_defaults!
-end
-
+Climate.settings.use_defaults!
 Colorize.on_tty_only!
 
 (ARGV.size == 3) ||
