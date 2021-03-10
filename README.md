@@ -1,4 +1,4 @@
-# blurhash.cr [![Build Status](https://travis-ci.com/Sija/blurhash.cr.svg?branch=master)](https://travis-ci.com/Sija/blurhash.cr) [![Releases](https://img.shields.io/github/release/Sija/blurhash.cr.svg)](https://github.com/Sija/blurhash.cr/releases) [![License](https://img.shields.io/github/license/Sija/blurhash.cr.svg)](https://github.com/Sija/blurhash.cr/blob/master/LICENSE)
+# blurhash.cr [![CI](https://github.com/Sija/blurhash.cr/actions/workflows/ci.yml/badge.svg)](https://github.com/Sija/blurhash.cr/actions/workflows/ci.yml) [![Releases](https://img.shields.io/github/release/Sija/blurhash.cr.svg)](https://github.com/Sija/blurhash.cr/releases) [![License](https://img.shields.io/github/license/Sija/blurhash.cr.svg)](https://github.com/Sija/blurhash.cr/blob/master/LICENSE)
 
 A pure Crystal implementation of [Blurhash](https://github.com/woltapp/blurhash). The API is stable, however the hashing function in either direction may not be.
 
