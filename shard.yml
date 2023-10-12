@@ -24,6 +24,6 @@ targets:
   blurhash:
     main: src/cli.cr
 
-crystal: 0.33.0
+crystal: ~> 1.6
 
 license: MIT
