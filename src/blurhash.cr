@@ -75,6 +75,7 @@ module Blurhash
       end
 
       Base83.encode(buffer, Utils.encode_dc(*dc), 4)
+      # ameba:disable Naming/BlockParameterName
       ac.try &.each do |c|
         Base83.encode(buffer, Utils.encode_ac(*c, maximum_value), 2)
       end
