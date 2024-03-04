@@ -11,9 +11,6 @@ dependencies:
   stumpy_jpeg:
     github: stumpycr/stumpy_jpeg
     branch: master
-  climate:
-    github: Sija/climate.cr
-    version: ~> 0.2.0
 
 development_dependencies:
   ameba:

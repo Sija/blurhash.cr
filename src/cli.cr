@@ -1,18 +1,14 @@
-require "climate"
 require "./blurhash"
 
 def fail(message : String? = nil)
   if message = message.presence
-    message = "!Error¡: #{message}"
+    message = "Error: #{message}"
   end
-  abort(message.try(&.climatize))
+  abort(message)
 end
 
-Climate.settings.use_defaults!
-Colorize.on_tty_only!
-
 (ARGV.size == 3) ||
-  abort "Usage: {#{PROGRAM_NAME}} <x_components> <y_components> <image_path>".climatize
+  abort "Usage: {#{PROGRAM_NAME}} <x_components> <y_components> <image_path>"
 
 x_components, y_components, image_path = ARGV
 
